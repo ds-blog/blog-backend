@@ -1,0 +1,9 @@
+# mybatis配置文件及mapper所在目录
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+spring:
+  profiles:
+    # 启用生产还是测试环境
+    active: dev
+

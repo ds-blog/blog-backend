@@ -1,0 +1,18 @@
+server:
+  # 启动端口号
+  port: 8082
+spring:
+  # 数据库信息
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 19920115asd
+
+# 日志级别及输出目录
+logging:
+  level:
+    root: info
+    com.dsying.blogbackend: DEBUG
+  file:
+    path: log/blog-dev.log
