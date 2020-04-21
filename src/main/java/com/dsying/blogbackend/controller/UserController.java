@@ -1,5 +1,6 @@
 package com.dsying.blogbackend.controller;
 
+import com.dsying.blogbackend.entity.BaseResponse;
 import com.dsying.blogbackend.entity.User;
 import com.dsying.blogbackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,11 @@ public class UserController {
   @ResponseBody
   public List<User> getAll() {
     return userService.getAll();
+  }
+
+  @RequestMapping(value = "/all2", method = RequestMethod.GET)
+  @ResponseBody
+  public BaseResponse<List<User>> getAll2() {
+    return BaseResponse.ok(userService.getAll());
   }
 }
