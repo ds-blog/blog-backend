@@ -49,6 +49,9 @@ public class BaseResponse<T> {
     this.data = data;
   }
 
+  public BaseResponse() {
+  }
+
   public BaseResponse(Integer status, String message, T data) {
     this.status = status;
     this.message = message;
