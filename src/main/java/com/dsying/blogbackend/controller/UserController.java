@@ -27,6 +27,7 @@ public class UserController {
   @RequestMapping(value = "/all2", method = RequestMethod.GET)
   @ResponseBody
   public BaseResponse<List<User>> getAll2() {
+    int i = 9 / 0;
     return BaseResponse.ok(userService.getAll());
   }
 }
