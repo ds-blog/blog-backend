@@ -1,7 +1,7 @@
 package com.dsying.blogbackend.controller;
 
-import com.dsying.blogbackend.entity.BaseResponse;
-import com.dsying.blogbackend.entity.User;
+import com.dsying.blogbackend.model.entity.User;
+import com.dsying.blogbackend.global.BaseResponse;
 import com.dsying.blogbackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

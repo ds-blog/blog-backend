@@ -1,6 +1,6 @@
 package com.dsying.blogbackend.dao;
 
-import com.dsying.blogbackend.entity.User;
+import com.dsying.blogbackend.model.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

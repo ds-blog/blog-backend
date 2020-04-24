@@ -1,7 +1,11 @@
-package com.dsying.blogbackend.entity;
+package com.dsying.blogbackend.global;
 
 import org.springframework.http.HttpStatus;
 
+/**
+ * 全局统一Response
+ * @param <T>
+ */
 public class BaseResponse<T> {
   /**
    * 响应状态码
