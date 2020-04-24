@@ -1,7 +1,7 @@
 package com.dsying.blogbackend.service;
 
 import com.dsying.blogbackend.dao.UserMapper;
-import com.dsying.blogbackend.entity.User;
+import com.dsying.blogbackend.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

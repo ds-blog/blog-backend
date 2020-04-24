@@ -1,4 +1,4 @@
-package com.dsying.blogbackend.aspect;
+package com.dsying.blogbackend.global;
 
 import com.google.gson.Gson;
 import org.aspectj.lang.JoinPoint;
@@ -11,10 +11,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 
 /**
- * AOP定义切面
+ * AOP定义切面 处理全局日志
  */
 @Aspect
 @Component
