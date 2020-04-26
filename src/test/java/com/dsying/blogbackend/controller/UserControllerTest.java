@@ -1,18 +1,14 @@
 package com.dsying.blogbackend.controller;
 
-import com.dsying.blogbackend.dao.UserMapper;
-import com.dsying.blogbackend.entity.User;
+import com.dsying.blogbackend.model.entity.User;
 import com.dsying.blogbackend.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import java.util.Arrays;
-import java.util.List;
 
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -28,12 +24,16 @@ class UserControllerTest {
   private UserService userService;
 
   @Test
-  void getAll() throws Exception {
-    User alex = new User(2, "dsying", 27);
-    List<User> allUsers = Arrays.asList(alex);
-    given(userService.getAll()).willReturn(allUsers);
+  void checkUser() throws Exception {
+    String username = "dingsheng";
+    String password = "19920115asd";
+    User alex = User.UserBuilder.anUser()
+            .withUserName(username)
+            .withPassword(password)
+            .build();
+    given(userService.checkUser(username, password)).willReturn(alex);
 
-    MvcResult mvcResult = mockMvc.perform(get("/user/all"))
+    MvcResult mvcResult = mockMvc.perform(get("/admin/login").queryParam("username", username).queryParam("password", password))
             .andExpect(status().isOk())
             .andDo(print())
             .andReturn();
