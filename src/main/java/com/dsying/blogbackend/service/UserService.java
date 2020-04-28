@@ -1,8 +1,12 @@
 package com.dsying.blogbackend.service;
 
+import com.dsying.blogbackend.global.BaseResponse;
 import com.dsying.blogbackend.model.entity.User;
+import org.apache.shiro.authc.UsernamePasswordToken;
 
 public interface UserService {
   // 检查用户是否存在
-  User checkUser(String username, String password);
+  BaseResponse<UsernamePasswordToken> authLogin(User user);
+
+  User findUserByUserName(String userName);
 }
