@@ -3,7 +3,7 @@ package com.dsying.blogbackend.model.enums;
 /**
  * 博客状态
  */
-public enum BlogStatus {
+public enum BlogStatusEnum {
   /**
    * 发布
    */
@@ -19,7 +19,7 @@ public enum BlogStatus {
 
   private int value;
 
-  BlogStatus(int value) {
+  BlogStatusEnum(int value) {
     this.value = value;
   }
 

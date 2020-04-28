@@ -4,7 +4,7 @@ import com.dsying.blogbackend.model.entity.Comment;
 import com.dsying.blogbackend.model.entity.Tag;
 import com.dsying.blogbackend.model.entity.Type;
 import com.dsying.blogbackend.model.entity.User;
-import com.dsying.blogbackend.model.enums.BlogStatus;
+import com.dsying.blogbackend.model.enums.BlogStatusEnum;
 
 import java.util.Date;
 import java.util.List;
@@ -24,7 +24,7 @@ public class BlogDto {
   // 横幅图片
   private String banner;
   // 状态
-  private BlogStatus status;
+  private BlogStatusEnum status;
   // 浏览次数
   private Integer views;
   // 点赞量

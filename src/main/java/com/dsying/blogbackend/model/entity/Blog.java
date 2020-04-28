@@ -1,6 +1,6 @@
 package com.dsying.blogbackend.model.entity;
 
-import com.dsying.blogbackend.model.enums.BlogStatus;
+import com.dsying.blogbackend.model.enums.BlogStatusEnum;
 
 import java.util.Date;
 
@@ -19,7 +19,7 @@ public class Blog {
   // 横幅图片
   private String banner;
   // 状态
-  private BlogStatus status;
+  private BlogStatusEnum status;
   // 浏览次数
   private Integer views;
   // 点赞量
@@ -74,11 +74,11 @@ public class Blog {
     this.banner = banner;
   }
 
-  public BlogStatus getStatus() {
+  public BlogStatusEnum getStatus() {
     return status;
   }
 
-  public void setStatus(BlogStatus status) {
+  public void setStatus(BlogStatusEnum status) {
     this.status = status;
   }
 
@@ -163,7 +163,7 @@ public class Blog {
     // 横幅图片
     private String banner;
     // 状态
-    private BlogStatus status;
+    private BlogStatusEnum status;
     // 浏览次数
     private Integer views;
     // 点赞量
@@ -209,7 +209,7 @@ public class Blog {
       return this;
     }
 
-    public BlogBuilder withStatus(BlogStatus status) {
+    public BlogBuilder withStatus(BlogStatusEnum status) {
       this.status = status;
       return this;
     }

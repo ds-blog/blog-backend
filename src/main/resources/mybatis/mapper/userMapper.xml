@@ -22,5 +22,8 @@
     <select id="findUserByUserNameAndPassword" resultMap="userResultMap">
         SELECT id, username, password FROM user where username = #{username} and password = #{password}
     </select>
+    <select id="findUserByUserName" resultMap="userResultMap">
+        SELECT id, username, password FROM user where username = #{username}
+    </select>
 
 </mapper>

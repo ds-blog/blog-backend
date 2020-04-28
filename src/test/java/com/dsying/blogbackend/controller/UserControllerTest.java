@@ -31,7 +31,7 @@ class UserControllerTest {
             .withUserName(username)
             .withPassword(password)
             .build();
-    given(userService.checkUser(username, password)).willReturn(alex);
+//    given(userService.checkUser(username, password)).willReturn(alex);
 
     MvcResult mvcResult = mockMvc.perform(get("/admin/login").queryParam("username", username).queryParam("password", password))
             .andExpect(status().isOk())
