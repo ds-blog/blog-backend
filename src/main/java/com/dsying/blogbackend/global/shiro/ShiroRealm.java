@@ -39,19 +39,12 @@ public class ShiroRealm extends AuthorizingRealm {
     }
     // 获取盐值，即用户名
     ByteSource salt = ByteSource.Util.bytes(userName);
-    SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(
+    return new SimpleAuthenticationInfo(
             user,
             user.getPassword(),
             salt,
             getName()
     );
-
-    // session中不需要保存密码
-//    user.setPassword("");
-    // 将用户信息放入session中
-//    SecurityUtils.getSubject().getSession().setAttribute(ConstentsEnum.SESSION_USER_INFO, user);
-
-    return simpleAuthenticationInfo;
   }
 
   public static void main(String[] args) {
@@ -59,7 +52,7 @@ public class ShiroRealm extends AuthorizingRealm {
     String salt = "dingsheng";
     int times = 2;
     String alogrithmName = "md5";
-    String encodePassword = new SimpleHash(alogrithmName, password, salt, times).toString();
+    String encodePassword = new SimpleHash("md5", password, salt, 2).toString();
     System.out.println(encodePassword);
   }
 }
