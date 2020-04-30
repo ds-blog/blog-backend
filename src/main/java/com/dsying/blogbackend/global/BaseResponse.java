@@ -1,5 +1,6 @@
 package com.dsying.blogbackend.global;
 
+import com.dsying.blogbackend.model.enums.HttpResultEnum;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -60,6 +61,17 @@ public class BaseResponse<T> {
     this.status = status;
     this.message = message;
     this.data = data;
+  }
+
+  /**
+   * create an result with HttpResultEnum and data
+   * @param httpResultEnum
+   * @param data
+   * @param <T>
+   * @return
+   */
+  public static <T> BaseResponse<T> result(HttpResultEnum httpResultEnum, T data) {
+    return new BaseResponse<>(httpResultEnum.getCode(), httpResultEnum.getMessage(), data);
   }
 
   /**

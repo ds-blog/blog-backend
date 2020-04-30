@@ -1,8 +1,7 @@
 package com.dsying.blogbackend.global.shiro;
 
 import com.alibaba.fastjson.JSONObject;
-import com.dsying.blogbackend.model.enums.ErrorEnum;
-import com.google.gson.Gson;
+import com.dsying.blogbackend.model.enums.HttpResultEnum;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -20,8 +19,8 @@ public class AjaxPermissionsAuthorizationFilter extends FormAuthenticationFilter
   @Override
   protected boolean onAccessDenied(ServletRequest request, ServletResponse response) {
     JSONObject jsonObject = new JSONObject();
-    jsonObject.put("code", ErrorEnum.E_20011.getErrorCode());
-    jsonObject.put("msg", ErrorEnum.E_20011.getErrorMsg());
+    jsonObject.put("code", HttpResultEnum.E_20011.getCode());
+    jsonObject.put("msg", HttpResultEnum.E_20011.getMessage());
     PrintWriter out = null;
     HttpServletResponse res = (HttpServletResponse) response;
     try {
