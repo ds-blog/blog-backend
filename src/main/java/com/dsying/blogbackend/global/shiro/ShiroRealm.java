@@ -50,8 +50,6 @@ public class ShiroRealm extends AuthorizingRealm {
   public static void main(String[] args) {
     String password = "19920115asd";
     String salt = "dingsheng";
-    int times = 2;
-    String alogrithmName = "md5";
     String encodePassword = new SimpleHash("md5", password, salt, 2).toString();
     System.out.println(encodePassword);
   }
