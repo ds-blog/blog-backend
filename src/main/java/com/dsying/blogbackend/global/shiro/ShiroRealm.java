@@ -4,7 +4,6 @@ import com.dsying.blogbackend.model.entity.User;
 import com.dsying.blogbackend.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
@@ -39,18 +38,6 @@ public class ShiroRealm extends AuthorizingRealm {
     }
     // 获取盐值，即用户名
     ByteSource salt = ByteSource.Util.bytes(userName);
-    return new SimpleAuthenticationInfo(
-            user,
-            user.getPassword(),
-            salt,
-            getName()
-    );
-  }
-
-  public static void main(String[] args) {
-    String password = "19920115asd";
-    String salt = "dingsheng";
-    String encodePassword = new SimpleHash("md5", password, salt, 2).toString();
-    System.out.println(encodePassword);
+    return new SimpleAuthenticationInfo(user, user.getPassword(), salt, getName());
   }
 }

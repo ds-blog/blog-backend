@@ -2,6 +2,7 @@ package com.dsying.blogbackend.service.impl;
 
 import com.dsying.blogbackend.dao.UserMapper;
 import com.dsying.blogbackend.global.BaseResponse;
+import com.dsying.blogbackend.global.utils.ShiroUtils;
 import com.dsying.blogbackend.model.entity.User;
 import com.dsying.blogbackend.model.params.LoginParam;
 import com.dsying.blogbackend.service.UserService;
@@ -24,7 +25,7 @@ public class UserServiceImpl implements UserService {
     UsernamePasswordToken token = new UsernamePasswordToken(username, password);
     try {
       currentUser.login(token);
-      return BaseResponse.ok("登录成功");
+      return BaseResponse.ok("登录成功", ShiroUtils.getSession().getId().toString());
     } catch(AuthenticationException e) {
       return BaseResponse.ok("登录失败");
     }

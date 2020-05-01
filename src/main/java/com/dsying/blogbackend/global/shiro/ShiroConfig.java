@@ -1,6 +1,8 @@
 package com.dsying.blogbackend.global.shiro;
 
+import com.dsying.blogbackend.global.utils.ShiroSessionIdGenerator;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -73,8 +75,20 @@ public class ShiroConfig {
   @Bean
   public SecurityManager securityManager() {
     DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+    // 自定义Ssession管理
+    securityManager.setSessionManager(new ShiroSessionManager());
+    // 自定义Realm验证
     securityManager.setRealm(ShiroRealm());
     return securityManager;
+  }
+
+  /**
+   * SessionID生成器
+   * @return
+   */
+  @Bean
+  public ShiroSessionIdGenerator sessionIdGenerator(){
+    return new ShiroSessionIdGenerator();
   }
 
   /**
