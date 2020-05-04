@@ -1,5 +1,6 @@
 package com.dsying.blogbackend.global;
 
+import com.dsying.blogbackend.global.exception.AlreadyExistsException;
 import com.dsying.blogbackend.model.enums.HttpResultEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,14 @@ public class ControllerExceptionHandler {
   public BaseResponse<String> MethodArgumentNotValidExceptionHandler(MethodArgumentNotValidException e) {
     ObjectError objectError = e.getBindingResult().getAllErrors().get(0);
     return BaseResponse.result(HttpResultEnum.V_1001, objectError.getDefaultMessage());
+  }
+
+  /**
+   * 处理数据已存在异常
+   * */
+  @ExceptionHandler(AlreadyExistsException.class)
+  public BaseResponse<String> AlreadyExistsExceptionHandler(AlreadyExistsException e) {
+    return BaseResponse.result(e);
   }
 
   @ExceptionHandler(Exception.class)

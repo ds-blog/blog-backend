@@ -1,5 +1,6 @@
 package com.dsying.blogbackend.global;
 
+import com.dsying.blogbackend.global.exception.AbstractBlogException;
 import com.dsying.blogbackend.model.enums.HttpResultEnum;
 import org.springframework.http.HttpStatus;
 
@@ -72,6 +73,10 @@ public class BaseResponse<T> {
    */
   public static <T> BaseResponse<T> result(HttpResultEnum httpResultEnum, T data) {
     return new BaseResponse<>(httpResultEnum.getCode(), httpResultEnum.getMessage(), data);
+  }
+
+  public static <T> BaseResponse<T> result(AbstractBlogException e) {
+    return new BaseResponse<T>(e.getStatus().value(), e.getMessage(), (T) e.getErrorData());
   }
 
   /**
