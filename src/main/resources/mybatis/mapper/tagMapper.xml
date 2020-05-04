@@ -31,5 +31,8 @@
 
     <select id="countByName" resultType="Integer">
         select count(1) from tag where name = #{name}
+        <if test="id != null">
+            and id != #{id}
+        </if>
     </select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.dsying.blogbackend.model.params;
 
+import com.dsying.blogbackend.model.entity.Tag;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -32,5 +34,13 @@ public class TagParam {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public static Tag convertTo(Integer id, TagParam tagParam) {
+    return new Tag(id, tagParam.getName(), tagParam.getDescription());
+  }
+
+  public static Tag convertTo(TagParam tagParam) {
+    return new Tag(tagParam.getName(), tagParam.getDescription());
   }
 }

@@ -14,9 +14,9 @@ public interface TagMapper {
 
   Tag getById(Integer id);
 
-  Tag updateById(Integer id);
+  int updateById(Tag tag);
 
-  Tag deleteById(Integer id);
+  int deleteById(Integer id);
 
-  int countByName(String name);
+  int countByName(Tag tag);
 }

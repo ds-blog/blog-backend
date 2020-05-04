@@ -25,10 +25,10 @@ public class TagServiceImpl implements TagService {
   @Override
   public int createTag(TagParam tagParam) {
     // 检查标签是否存在
-    int count  = tagMapper.countByName(tagParam.getName());
+    int count  = tagMapper.countByName(TagParam.convertTo(tagParam));
     if(count > 0) {
       // 如果标签已存在
-      throw new AlreadyExistsException("标签已存在").setErrorData(tagParam);
+      throw new AlreadyExistsException("标签名已存在").setErrorData(tagParam);
     }
 
     return tagMapper.createTag(tagParam);
@@ -40,17 +40,21 @@ public class TagServiceImpl implements TagService {
   }
 
   @Override
-  public Tag updateById(Integer id) {
-    return tagMapper.updateById(id);
+  public int updateById(Integer id, TagParam tagParam) {
+    Tag tag = TagParam.convertTo(id, tagParam);
+    // 检查标签是否存在
+    int count  = tagMapper.countByName(tag);
+    if(count > 0) {
+      // 如果标签已存在
+      throw new AlreadyExistsException("标签名已存在").setErrorData(tagParam);
+    }
+
+    return tagMapper.updateById(tag);
   }
 
   @Override
-  public Tag deleteById(Integer id) {
+  public int deleteById(Integer id) {
     return tagMapper.deleteById(id);
   }
 
-  @Override
-  public int countByName(String name) {
-    return tagMapper.countByName(name);
-  }
 }
