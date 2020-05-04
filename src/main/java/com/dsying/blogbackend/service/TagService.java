@@ -12,9 +12,8 @@ public interface TagService {
 
   Tag getById(Integer id);
 
-  Tag updateById(Integer id);
+  int updateById(Integer id, TagParam tagParam);
 
-  Tag deleteById(Integer id);
+  int deleteById(Integer id);
 
-  int countByName(String name);
 }

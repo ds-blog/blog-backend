@@ -28,18 +28,20 @@ public class TagController {
     return BaseResponse.ok("标签新增成功");
   }
 
-  @GetMapping(value = "{:id}")
+  @GetMapping(value = "/{id}")
   public BaseResponse<Tag> getTagById(@PathVariable("id") Integer id) {
     return BaseResponse.ok(tagService.getById(id));
   }
 
-  @PutMapping(value = "{:id}")
-  public BaseResponse<Tag> updateById(@PathVariable("id") Integer id) {
-    return BaseResponse.ok(tagService.updateById(id));
+  @PutMapping(value = "/{id}")
+  public BaseResponse<String> updateById(@PathVariable("id") Integer id, @Valid @RequestBody TagParam tagParam) {
+    tagService.updateById(id, tagParam);
+    return BaseResponse.ok("标签更新成功");
   }
 
-  @DeleteMapping(value = "{:id}")
-  public BaseResponse<Tag> deleteById(@PathVariable("id") Integer id) {
-    return BaseResponse.ok(tagService.deleteById(id));
+  @DeleteMapping(value = "/{id}")
+  public BaseResponse<String> deleteById(@PathVariable("id") Integer id) {
+    tagService.deleteById(id);
+    return BaseResponse.ok("标签删除成功");
   }
 }
